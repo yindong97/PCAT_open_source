@@ -4,6 +4,7 @@ project(rviz_cloud_annotation)
 find_package(catkin REQUIRED COMPONENTS
   cv_bridge
   interactive_markers
+  pcl_ros
   pcl_conversions
   roscpp
   tf
@@ -55,6 +56,8 @@ generate_messages(
 ###################################
 ## catkin specific configuration ##
 ###################################
+
+catkin_package()
 
 include_directories(
   ${catkin_INCLUDE_DIRS}
