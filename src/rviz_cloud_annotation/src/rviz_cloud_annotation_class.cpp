@@ -521,6 +521,10 @@ void RVizCloudAnnotation::LoadCloud(const std::string &filename, const std::stri
   if (pcd_type == "XYZI"){
     PointXYZICloud cloud_in;
     pcl::fromPCLPointCloud2(cloud2, cloud_in);//input pointCloud as XYZI
+    if (!cloud_in.is_dense){
+      std::vector<int> vec;
+      pcl::removeNaNFromPointCloud(cloud_in, cloud_in, vec);
+    }
     // transform XYZI to XYZRGB
     PointXYZRGBCloud xyz_rgb_cloud;
     for (int64 i = 0; i < cloud_in.size(); i++)
@@ -541,11 +545,19 @@ void RVizCloudAnnotation::LoadCloud(const std::string &filename, const std::stri
   else if(pcd_type == "XYZRGB"){
     PointXYZRGBCloud cloud_in;
     pcl::fromPCLPointCloud2(cloud2, cloud_in);//input pointCloud as XYZRGB
+    if (!cloud_in.is_dense){
+      std::vector<int> vec;
+      pcl::removeNaNFromPointCloud(cloud_in, cloud_in, vec);
+    }
     pcl::copyPointCloud(cloud_in, cloud);//Transform to XYZRGBNormal finally
   }
   else if(pcd_type == "XYZ"){
     PointXYZCloud cloud_in;
     pcl::fromPCLPointCloud2(cloud2, cloud_in);//input pointCloud as XYZ
+    if (!cloud_in.is_dense){
+      std::vector<int> vec;
+      pcl::removeNaNFromPointCloud(cloud_in, cloud_in, vec);
+    }
     pcl::copyPointCloud(cloud_in, cloud);//Transform to XYZRGBNormal finally
   }
   

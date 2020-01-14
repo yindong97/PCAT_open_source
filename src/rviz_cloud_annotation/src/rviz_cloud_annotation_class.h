@@ -1,6 +1,8 @@
 #ifndef RVIZ_CLOUD_ANNOTATION_CLASS_H
 #define RVIZ_CLOUD_ANNOTATION_CLASS_H
 
+#include <pcl/filters/filter.h>
+
 #include <rviz_cloud_annotation/RectangleSelectionViewport.h>
 #include <rviz_cloud_annotation/UndoRedoState.h>
 #include "point_cloud_plane_curves_extract.h"
